@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>小姐姐，你做我女朋友好不好</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/jquery-3.3.1.js"></script>
+    <style>
+        :root {
+            font-size: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            box-sizing: border-box;
+            width: 100vw;
+            height: 100vh;
+            background: #fff;
+            display: flex;
+            align-content: center;
+            flex-wrap: wrap;
+        }
+
+        .test {
+            width: 100vw;
+            height: 10%;
+            text-align: center;
+            color: #424242;
+            font-size: 20px;
+            font-weight: 200;
+        }
+
+        .btnDiv {
+            width: 100vw;
+            height: 10%;
+            text-align: center;
+        }
+
+        button {
+            width: 12rem;
+            height: 3rem;
+            background: #f155d0;
+            color: #fff;
+            border: none;
+            border-radius: .5rem;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button:first-child {
+            margin-right: 3rem;
+        }
+
+        .over {
+            position: absolute;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, .6);
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            
+            display: none;
+        }
+
+        .show {
+
+            background: #fff;
+            border-radius: .5rem;
+            text-align: center;
+            width: 80vw;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+        }
+
+        #ok {
+            margin-top: 2rem;
+            width: 20rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="test">小姐姐，你做我女朋友好不好？</div>
+        <div class="btnDiv">
+
+            <button id="buhao">不好</button>
+            <button id="hao">好</button>
+        </div>
+    </div>
+    <div class="over">
+        <div class="show">小姐姐在考虑一下呗</div>
+        <button id="ok">好了好了，我答应你了</button>
+    </div>
+    <script>
+        // JavaScript Document
+        var Dianji = 0;
+
+        var arr = ["小姐姐在考虑一下呗", "你是我见过的最帅气善良可爱的女孩", "一生一世爱你", "家务我全干", "不藏私房钱", "房子写你名", "工资全上交"];
+
+        $("#buhao").on("click", function () {
+            
+            $(".over").css("display", "flex")
+            checkBtn()
+        })
+        $("#hao, #ok").on("click", function () {
+            
+            clearInterval(timer);
+            alert("小姐姐终于同意了，我爱你");
+        })
+
+        var timer = null;
+        function checkBtn() {
+            clearInterval(timer);
+            timer = setInterval(function(){
+                show()
+            },1500)
+        }
+        
+        function show(){
+            $(".show").html(arr[Dianji])
+            Dianji ++
+            if(Dianji == 6){
+                Dianji = 0
+            }
+
+        }
+    </script>
+</body>
+
+</html>
